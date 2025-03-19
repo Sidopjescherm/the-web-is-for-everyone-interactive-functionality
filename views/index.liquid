@@ -1,6 +1,13 @@
 {% render 'partials/head.liquid' %}
 
-    <div>
+    <div id="playlist">
+        {% cycle "{{ playlists }}"  %} 
+            <img src="https://fdnd-agency.directus.app/assets//{{ playlist.image }}">
+            <p>{{ playlist.title }}</p>
+
+    </div>
+
+    <div id="stories">
         {%for story in stories%}
             <img src="https://fdnd-agency.directus.app/assets//{{ story.image }}">
             <p>{{ story.title }}</p>
