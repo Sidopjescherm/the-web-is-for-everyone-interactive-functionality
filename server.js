@@ -60,6 +60,22 @@ app.set('views', './views')
 
 
 console.log('Let op: Er zijn nog geen routes. Voeg hier dus eerst jouw GET en POST routes toe.')
+app.get('/', async function (request, response) {
+  // hier zet ik mijn verhalen neer 
+  const storyResponse = await fetch(`${api}${api_story}`)  
+  const playlistResponse = await fetch(`${api}${api_playlist}`)
+
+  // ik wil bekijken of de juiste stories worden opgehaald
+  const storyResponseJSON = await storyResponse.json()
+  const playlistResponseJSON = await playlistResponse.json()
+
+  // console.log(storiesResponseJSON)
+
+  response.render('index.liquid', 
+    {stories: storyResponseJSON.data,
+     playlists: playlistResponseJSON.data
+    })
+})
 
 /*
 // Zie https://expressjs.com/en/5x/api.html#app.get.method over app.get()
@@ -106,4 +122,5 @@ app.set('port', process.env.PORT || 8000)
 app.listen(app.get('port'), function () {
   // Toon een bericht in de console
   console.log(`Daarna kun je via http://localhost:${app.get('port')}/ jouw interactieve website bekijken.\n\nThe Web is for Everyone. Maak mooie dingen 🙂`)
+  console.log(`Application started on http://localhost:${app.get('port')}`)
 })
