@@ -8,6 +8,36 @@ import { Liquid } from 'liquidjs';
 // Maak een nieuwe Express applicatie aan, waarin we de server configureren
 const app = express()
 
+// hier is mijn lijst van links die ik ga gebruiken in dit project
+const api = "https://fdnd-agency.directus.app/items/tm_"
+const api_users = "users"
+const api_profile = "profile"
+const api_buddy = "buddy"
+const api_lang = "language"
+const api_audio = "audio"
+const api_playlist = "playlist"
+const api_story = "story"
+const api_animal = "animal"
+const api_season = "season"
+
+// hier fetch ik naar de api
+const usersResponse = await fetch(`${api}${api_users}`)
+const profileResponse = await fetch(`${api}${api_profile}`)
+const buddyResponse = await fetch(`${api}${api_buddy}`)
+const languageResponse = await fetch(`${api}${api_lang}`)
+const audioResponse = await fetch(`${api}${api_audio}`)
+const playlistResponse = await fetch(`${api}${api_playlist}`)
+
+// Hier haal ik de data terug als JSON data
+const usersResponseJSON = await usersResponse.json()
+const profileResponseJSON = await profileResponse.json()
+const buddyResponseJSON = await buddyResponse.json()
+const languageResponseJSON = await languageResponse.json()
+const audioResponseJSON = await audioResponse.json()
+const playlistResponseJSON = await playlistResponse.json()
+
+console.log(playlistResponseJSON)
+
 // Maak werken met data uit formulieren iets prettiger
 app.use(express.urlencoded({extended: true}))
 
