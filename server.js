@@ -27,6 +27,8 @@ const buddyResponse = await fetch(`${api}${api_buddy}`)
 const languageResponse = await fetch(`${api}${api_lang}`)
 const audioResponse = await fetch(`${api}${api_audio}`)
 const playlistResponse = await fetch(`${api}${api_playlist}`)
+const storyResponse = await fetch(`${api}${api_story}`)
+const animalReponse = await fetch(`${api}${api_animal}`)
 
 // Hier haal ik de data terug als JSON data
 const usersResponseJSON = await usersResponse.json()
@@ -35,9 +37,12 @@ const buddyResponseJSON = await buddyResponse.json()
 const languageResponseJSON = await languageResponse.json()
 const audioResponseJSON = await audioResponse.json()
 const playlistResponseJSON = await playlistResponse.json()
+const storyResponseJSON = await storyResponse.json()
+const animalReponseJSON = await animalReponse.json()
 
 console.log(playlistResponseJSON)
 
+console.log(animalReponseJSON)
 // Maak werken met data uit formulieren iets prettiger
 app.use(express.urlencoded({extended: true}))
 
