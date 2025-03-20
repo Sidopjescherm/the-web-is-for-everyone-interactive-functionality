@@ -88,6 +88,7 @@ app.post('/', async function (request, response) {
       slug: 'eigen_play_list',
       image: '',
       stories: '',
+      slug: 'eigen_play_list'
     }),
     headers: {
       'Content-type':'application/json;charset=UTF-8'

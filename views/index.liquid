@@ -9,13 +9,23 @@
         <form action="/views/index.liquid" method="post">
             <label> Nieuwe playlist
                 <input type="checkbox" name="voeg-playlist-toe">
+                <input type="submit" name="voeg-playlist-toe">
             </label>
         </form>
     </div>
 
     <div id="stories">
+        <h2>All Stories</h2>
         {%for story in stories%}
             <img src="https://fdnd-agency.directus.app/assets//{{ story.image }}">
             <p>{{ story.title }}</p>
+        {% endfor %}
+    </div>
+
+    <div id="playlist">
+        <h3>Suggested Playlists</h2>
+        {%for playlist in playlists %}  
+            <img src="https://fdnd-agency.directus.app/assets//{{ playlist.image }}">
+            <p>{{ playlist.title }}</p>
         {% endfor %}
     </div>
