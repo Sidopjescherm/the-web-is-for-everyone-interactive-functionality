@@ -5,6 +5,12 @@
             <img src="https://fdnd-agency.directus.app/assets//{{ playlist.image }}">
             <p>{{ playlist.title }}</p>
 
+    <div>
+        <form action="/views/index.liquid" method="post">
+            <label> Nieuwe playlist
+                <input type="checkbox" name="voeg-playlist-toe">
+            </label>
+        </form>
     </div>
 
     <div id="stories">

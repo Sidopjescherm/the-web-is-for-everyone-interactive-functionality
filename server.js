@@ -77,6 +77,28 @@ app.get('/', async function (request, response) {
     })
 })
 
+// hier voeg ik een post request toe om een nieuwe playlist te maken en toe te voegen bij de bestaande playlists
+app.post('/', async function (request, response) {
+  // console.log(request.body)
+  // eerst fetch ik naar de juiste informatie
+  const results = await fetch('https://fdnd-agency.directus.app/items/tm_playlist',{
+    method: 'POST',
+    body: JSON.stringify({
+      title: 'Playlist 1',
+      slug: 'eigen_play_list',
+      image: '',
+      stories: '',
+    }),
+    headers: {
+      'Content-type':'application/json;charset=UTF-8'
+    }
+  });
+  console.log(results)
+  response.redirect(303, '/')
+})
+
+
+
 /*
 // Zie https://expressjs.com/en/5x/api.html#app.get.method over app.get()
 app.get(…, async function (request, response) {
