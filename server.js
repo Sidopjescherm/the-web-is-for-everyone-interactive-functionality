@@ -40,9 +40,18 @@ const playlistResponseJSON = await playlistResponse.json()
 const storyResponseJSON = await storyResponse.json()
 const animalReponseJSON = await animalReponse.json()
 
-console.log(playlistResponseJSON)
 
-console.log(animalReponseJSON)
+// console.log(animalReponseJSON)
+
+
+// hier komt een test voor Anouk:
+  // app.get('/detail/:id'), async function (request, response) {
+  //   const apiWebinars = 'webinars'
+  //   const webinarFields = '?fields=title,thumbnail,date,categories.*.*,speakers.*.*'
+    
+  //   const viewField = "?fields=views,id"
+  //   const viewsFieldResponse = await fetch(`${apiEndpoint}${apiWebinars}${viewField}&filter={%22id%22:${request.params.id}}`)
+  // }
 // Maak werken met data uit formulieren iets prettiger
 app.use(express.urlencoded({extended: true}))
 
@@ -89,6 +98,7 @@ app.post('/', async function (request, response) {
       image: '',
       stories: '',
       slug: 'eigen_play_list'
+      title: request.body.title
     }),
     headers: {
       'Content-type':'application/json;charset=UTF-8'
@@ -98,6 +108,17 @@ app.post('/', async function (request, response) {
   response.redirect(303, '/')
 })
 
+app.post('/delete/:id', async function (request, response) {
+  console.log(request.body)
+
+  const deleteplaylist = await fetch(`https://fdnd-agency.directus.app/items/tm_playlist/${request.params.id}`,{
+    method: 'DELETE',
+
+  });
+  console.log(deleteplaylist)
+
+  response.redirect(303, '/')
+})
 
 
 /*

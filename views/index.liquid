@@ -23,9 +23,17 @@
     </div>
 
     <div id="playlist">
-        <h3>Suggested Playlists</h2>
+        <h2>Suggested Playlists</h2>
         {%for playlist in playlists %}  
-            <img src="https://fdnd-agency.directus.app/assets//{{ playlist.image }}">
-            <p>{{ playlist.title }}</p>
+           
+            <h3>{{ playlist.title }}</h3>
+                <img src="https://fdnd-agency.directus.app/assets/{{ playlist.image }}">
+                <form action="/delete/{{ playlist.id }}" method="POST">
+            
+                <button type="submit" name="delete">Verwijder Playlist</button>
+                </form>
+                    
+
+            </form>
         {% endfor %}
     </div>
