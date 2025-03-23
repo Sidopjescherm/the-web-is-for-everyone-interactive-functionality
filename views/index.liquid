@@ -1,16 +1,12 @@
 {% render 'partials/head.liquid' %}
 
-    <div id="playlist">
-        {% cycle "{{ playlists }}"  %} 
-            <img src="https://fdnd-agency.directus.app/assets//{{ playlist.image }}">
-            <p>{{ playlist.title }}</p>
-
     <div>
-        <form action="/views/index.liquid" method="post">
-            <label> Nieuwe playlist
-                <input type="checkbox" name="voeg-playlist-toe">
-                <input type="submit" name="voeg-playlist-toe">
+        <form action="/" method="post">
+            <h1>Playlist toevoegen</h1>
+            <label>Titel van playlist
+                <input name="title">
             </label>
+            <button type="submit">Voeg toe</button>
         </form>
     </div>
 
