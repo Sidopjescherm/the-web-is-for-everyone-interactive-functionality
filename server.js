@@ -67,8 +67,7 @@ app.engine('liquid', engine.express());
 // Let op: de browser kan deze bestanden niet rechtstreeks laden (zoals voorheen met HTML bestanden)
 app.set('views', './views')
 
-
-console.log('Let op: Er zijn nog geen routes. Voeg hier dus eerst jouw GET en POST routes toe.')
+// ----------------------------------------------Hier is de landingspagina----------------------------------------------
 app.get('/', async function (request, response) {
   // hier zet ik mijn verhalen neer 
   const storyResponse = await fetch(`${api}${api_story}`)  
@@ -93,33 +92,41 @@ app.post('/', async function (request, response) {
   const results = await fetch('https://fdnd-agency.directus.app/items/tm_playlist',{
     method: 'POST',
     body: JSON.stringify({
-      title: 'Playlist 1',
-      slug: 'eigen_play_list',
-      image: '',
-      stories: '',
-      slug: 'eigen_play_list'
       title: request.body.title
     }),
     headers: {
       'Content-type':'application/json;charset=UTF-8'
     }
   });
-  console.log(results)
+  //console.log(results)
   response.redirect(303, '/')
 })
 
+// Hiermee verwijder je een playlist die is gemaakt
 app.post('/delete/:id', async function (request, response) {
-  console.log(request.body)
+  // console.log(request.body)
 
   const deleteplaylist = await fetch(`https://fdnd-agency.directus.app/items/tm_playlist/${request.params.id}`,{
     method: 'DELETE',
 
   });
-  console.log(deleteplaylist)
+  // console.log(deleteplaylist)
 
   response.redirect(303, '/')
 })
 
+
+// ----------------------------------------------Hier is de Detailpagina----------------------------------------------
+app.get('/stories/:id', async function (request, response) {
+  // hier haal ik de verhalen op uit de database
+  const storyResponse = await fetch(`${api}${api_story}/?filter={"id":"${request.params.id}"}`)
+  const storyResponseJSON = await storyResponse.json()
+  // console.log(storyResponseJSON)
+  // Hier haal ik de buddies uit de database
+  const animalReponse = await fetch(`${api}${api_animal}`)
+  const animalReponseJSON = await animalReponse.json()
+  console.log(animalReponseJSON)
+})
 
 /*
 // Zie https://expressjs.com/en/5x/api.html#app.get.method over app.get()
@@ -165,6 +172,5 @@ app.set('port', process.env.PORT || 8000)
 // Start Express op, gebruik daarbij het zojuist ingestelde poortnummer op
 app.listen(app.get('port'), function () {
   // Toon een bericht in de console
-  console.log(`Daarna kun je via http://localhost:${app.get('port')}/ jouw interactieve website bekijken.\n\nThe Web is for Everyone. Maak mooie dingen 🙂`)
   console.log(`Application started on http://localhost:${app.get('port')}`)
 })
