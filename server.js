@@ -123,9 +123,12 @@ app.get('/stories/:id', async function (request, response) {
   const storyResponseJSON = await storyResponse.json()
   // console.log(storyResponseJSON)
   // Hier haal ik de buddies uit de database
-  const animalReponse = await fetch(`${api}${api_animal}`)
+  const animalReponse = await fetch(`${api}${api_animal}/?filter={"id":"${request.params.id}"}`)
   const animalReponseJSON = await animalReponse.json()
-  console.log(animalReponseJSON)
+  // console.log(animalReponseJSON), console.log(storyResponseJSON)
+
+  // Hier render ik de verhalen en de buddies
+  response.render('story.liquid', {story: storyResponseJSON.data[0], buddy: animalReponseJSON.data[0]})
 })
 
 /*
@@ -167,7 +170,7 @@ app.post(…, async function (request, response) {
 
 // Stel het poortnummer in waar Express op moet gaan luisteren
 // Lokaal is dit poort 8000; als deze applicatie ergens gehost wordt, waarschijnlijk poort 80
-app.set('port', process.env.PORT || 8000)
+app.set('port', process.env.PORT || 7000)
 
 // Start Express op, gebruik daarbij het zojuist ingestelde poortnummer op
 app.listen(app.get('port'), function () {
