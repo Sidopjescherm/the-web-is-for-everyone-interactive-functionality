@@ -15,6 +15,9 @@
         {%for story in stories%}
             <img src="https://fdnd-agency.directus.app/assets//{{ story.image }}">
             <p>{{ story.title }}</p>
+            <label>
+                <input class="switch" type="checkbox"> 
+            </label>
         {% endfor %}
     </div>
 
