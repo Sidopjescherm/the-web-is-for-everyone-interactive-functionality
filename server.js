@@ -98,7 +98,7 @@ app.post('/', async function (request, response) {
       'Content-type':'application/json;charset=UTF-8'
     }
   });
-  //console.log(results)
+  console.log(results)
   response.redirect(303, '/')
 })
 
@@ -125,7 +125,7 @@ app.get('/stories/:id', async function (request, response) {
   // Hier haal ik de buddies uit de database
   const animalReponse = await fetch(`${api}${api_animal}/?filter={"id":"${request.params.id}"}`)
   const animalReponseJSON = await animalReponse.json()
-  // console.log(animalReponseJSON), console.log(storyResponseJSON)
+  console.log(animalReponseJSON), console.log(storyResponseJSON)
 
   // Hier render ik de verhalen en de buddies
   response.render('story.liquid', {story: storyResponseJSON.data[0], buddy: animalReponseJSON.data[0]})

@@ -1,3 +1,15 @@
 {% render 'partials/head.liquid' %}
 
- <h1>{{ story.title }}</h1>
+<main>
+    <h1>{{ story.title }}</h1>
+
+    <img src="https://fdnd-agency.directus.app/assets//{{ story.image }}">
+
+    <article>
+        <h2>{{ story.summary }}</h2>
+
+        <p>{{ buddy.animal }}</p>
+    </article>
+ </main>
+
+ <a href="/">Terug naar verhalen</a>

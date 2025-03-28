@@ -1,4 +1,4 @@
-body {
+:root {
     /* Kleuren */
     
     /* Home Background */
@@ -80,6 +80,13 @@ body {
     /* Formulier elementen */
     }
 
+    body{
+        background-color: var(--van-kleur-method);
+    }
+
+    #stories{
+        background-color: white;
+    }
 /* Sidney zijn gedeelte */
 .button-menu{
     height: 15rem;
