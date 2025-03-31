@@ -51,3 +51,7 @@ body{
     #stories input:checked{
         background-color: rgb(114 222 195);
     }
+
+    .load-state{
+        background-color: blue;
+    }
