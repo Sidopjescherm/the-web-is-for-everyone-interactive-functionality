@@ -2,12 +2,22 @@
     box-sizing: border-box;
 }
 
-body{
-    img{
-        width: 5rem;
-        height: 5rem;
+    body{
+        img{
+            width: 5rem;
+            height: 5rem;
+        }
     }
-}
+    #playlist_toevoegen{
+        background-color: white;
+        width: 12em;
+        height: 15em;
+    }
+
+    .load-state{
+        background-color: blue;
+    }
+
 
     #stories label {
         display:inline-flex;
@@ -50,8 +60,4 @@ body{
     
     #stories input:checked{
         background-color: rgb(114 222 195);
-    }
-
-    .load-state{
-        background-color: blue;
     }

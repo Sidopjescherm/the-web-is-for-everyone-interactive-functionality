@@ -1,38 +1,41 @@
 {% render 'partials/head.liquid' %}
-
-    <div>
-        <form action="/" method="post" data-enhanced="toevoegen-{{ playlist.title }}">
-            <h1>Playlist toevoegen</h1>
-            <label>Titel van playlist
-                <input name="title">
-            </label>
-            <button type="submit">Voeg toe</button>
-        </form>
-    </div>
-
-    <div id="stories">
-        <h2>All Stories</h2>
-        {%for story in stories%}
-            <img src="https://fdnd-agency.directus.app/assets//{{ story.image }}">
-            <p>{{ story.title }}</p>
-            <label>
-                <input class="switch" type="checkbox"> 
-            </label>
-        {% endfor %}
-    </div>
-
-    <div id="playlist">
-        <h2>Suggested Playlists</h2>
-        {%for playlist in playlists %}  
-           
-            <h3>{{ playlist.title }}</h3>
-                <img src="https://fdnd-agency.directus.app/assets/{{ playlist.image }}">
-                <form action="/delete/{{ playlist.id }}" method="POST">
-            
-                <button type="submit" name="delete">Verwijder Playlist</button>
-                </form>
-                    
-
+    <section>
+        <div id="playlist_toevoegen">
+            <form action="/" method="post" data-enhanced="toevoegen-{{ playlist.title }}">
+                <p>Maak zelf een playlsit aan</p>
+                <label>Titel van playlist
+                    <input name="title">
+                </label>
+                <button type="submit">+</button>
             </form>
-        {% endfor %}
-    </div>
+        </div>
+
+        <details>
+            <summary>All Stories</summary>
+            <div id="stories">
+                {%for story in stories%}
+                    <img src="https://fdnd-agency.directus.app/assets//{{ story.image }}">
+                    <p>{{ story.title }}</p>
+                    <label>
+                        <input class="switch" type="checkbox"> 
+                    </label>
+                {% endfor %}
+            </div>
+        </details>
+
+        <div id="playlist">
+            <h2>Suggested Playlists</h2>
+            {%for playlist in playlists %}  
+            
+                <h3>{{ playlist.title }}</h3>
+                    <img src="https://fdnd-agency.directus.app/assets/{{ playlist.image }}">
+                    <form action="/delete/{{ playlist.id }}" method="POST">
+                
+                    <button type="submit" name="delete">Verwijder Playlist</button>
+                    </form>
+                        
+
+                </form>
+            {% endfor %}
+        </div>
+    </section>
