@@ -77,7 +77,7 @@ app.get('/', async function (request, response) {
   const storyResponseJSON = await storyResponse.json()
   const playlistResponseJSON = await playlistResponse.json()
 
-  // console.log(storiesResponseJSON)
+  console.log(storyResponseJSON)
 
   response.render('index.liquid', 
     {stories: storyResponseJSON.data,
@@ -121,15 +121,21 @@ app.get('/stories/:id', async function (request, response) {
   // hier haal ik de verhalen op uit de database
   const storyResponse = await fetch(`${api}${api_story}/?filter={"id":"${request.params.id}"}`)
   const storyResponseJSON = await storyResponse.json()
+  
+  const audioResponse = await fetch(`${api}${api_audio}`)
+  const audioResponseJSON = await audioResponse.json()
   // console.log(storyResponseJSON)
   // Hier haal ik de buddies uit de database
   const animalReponse = await fetch(`${api}${api_animal}/?filter={"id":"${request.params.id}"}`)
   const animalReponseJSON = await animalReponse.json()
-  console.log(animalReponseJSON), console.log(storyResponseJSON)
+  // console.log(animalReponseJSON), 
+  console.log(audioResponseJSON)
 
   // Hier render ik de verhalen en de buddies
-  response.render('story.liquid', {story: storyResponseJSON.data[0], buddy: animalReponseJSON.data[0]})
+  response.render('story.liquid', {story: storyResponseJSON.data[0], buddy: animalReponseJSON.data[0], audio: audioResponseJSON.data[0]})
 })
+
+
 
 /*
 // Zie https://expressjs.com/en/5x/api.html#app.get.method over app.get()

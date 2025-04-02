@@ -2,7 +2,7 @@
     <section>
         <div id="playlist_toevoegen">
             <form action="/" method="post" data-enhanced="toevoegen-{{ playlist.title }}">
-                <p>Maak zelf een playlsit aan</p>
+                <p>Maak zelf een playlist aan</p>
                 <label>Titel van playlist
                     <input name="title">
                 </label>
@@ -14,11 +14,16 @@
             <summary>All Stories</summary>
             <div id="stories">
                 {%for story in stories%}
-                    <img src="https://fdnd-agency.directus.app/assets//{{ story.image }}">
-                    <p>{{ story.title }}</p>
-                    <label>
-                        <input class="switch" type="checkbox"> 
-                    </label>
+                    <ul>
+                        <li>
+                            <img src="https://fdnd-agency.directus.app/assets//{{ story.image }}">
+                            <p>{{ story.title }}</p>
+                            <a href="/stories/{{ story.id }}">play story</a>
+                            <label>
+                                <input class="switch" type="checkbox"> 
+                            </label>
+                        </li>
+                    </ul>
                 {% endfor %}
             </div>
         </details>

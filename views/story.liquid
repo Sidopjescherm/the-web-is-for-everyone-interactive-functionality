@@ -10,6 +10,17 @@
 
         <p>{{ buddy.animal }}</p>
     </article>
+
+    <div>
+        <audio  controls src="https://fdnd-agency.directus.app/assets/{{ audio.audio_file }}">
+        <track
+        default
+        src="https://fdnd-agency.directus.app/assets/{{ audio.transcript_file }}" />
+
+        </audio>
+        <p></p>
+        {% comment %} Dit dient waar de audio als tekst wordt geladen {% endcomment %}
+    </div>
  </main>
 
  <a href="/">Terug naar verhalen</a>
