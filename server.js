@@ -122,7 +122,7 @@ app.get('/stories/:id', async function (request, response) {
   const storyResponse = await fetch(`${api}${api_story}/?filter={"id":"${request.params.id}"}`)
   const storyResponseJSON = await storyResponse.json()
   
-  const audioResponse = await fetch(`${api}${api_audio}`)
+  const audioResponse = await fetch(`${api}${api_audio}/?filter={"id":"${request.params.id}"}`)
   const audioResponseJSON = await audioResponse.json()
   // console.log(storyResponseJSON)
   // Hier haal ik de buddies uit de database
