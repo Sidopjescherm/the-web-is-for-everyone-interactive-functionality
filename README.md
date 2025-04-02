@@ -38,16 +38,13 @@ Hier verbind ik de audio in de server.js:
 </code> 
 
 Hier laat ik in de liquid file zien dat ik het verbind op de juiste wijze:
-<code>
-          <audio  controls src="https://fdnd-agency.directus.app/assets/{{ audio.audio_file }}">
+        <audio  controls src="https://fdnd-agency.directus.app/assets/{{ audio.audio_file }}">
         <track
         default
         src="https://fdnd-agency.directus.app/assets/{{ story.transcript }}" />
-</code>
 
 playlists toevoegen en verwijderen doe je met een post systeem dat jouw data toevoegd en ook weer verwijderd. Met de code hieronder voeg je een playlist toe.
 
-  <code>
     app.post('/', async function (request, response) {
     const results = await fetch('https://fdnd-agency.directus.app/items/tm_playlist',{
       method: 'POST',
@@ -60,7 +57,6 @@ playlists toevoegen en verwijderen doe je met een post systeem dat jouw data toe
     });
     response.redirect(303, '/')
    })
-  </code>
 
   En hier verwijder je weer een playlist
 
