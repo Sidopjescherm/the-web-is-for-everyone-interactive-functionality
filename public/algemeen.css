@@ -46,14 +46,12 @@
             display:block;
             width:2em;
             height:2em;
-            background-color:white;
             border-radius:inherit;
             transition:.3s;
         }
         
         #stories input:checked::after {
-            translate:2.5em;
-            background-color:white;
+            translate:2em;
             font-size: 1em;
             font-weight: bold;
             

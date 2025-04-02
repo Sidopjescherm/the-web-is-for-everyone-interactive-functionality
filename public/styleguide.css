@@ -103,6 +103,14 @@
 	    display:grid;
 	    place-items:end start;
     }
+
+    #stories input::after{
+        background-color: var(--button-color-three);
+    }
+
+    #stories input:checked::after{
+        background-color: var(--button-color-three);
+    }
 /* Sidney zijn gedeelte */
 .button-menu{
     height: 15rem;

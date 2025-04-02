@@ -31,7 +31,49 @@ Wat ik heb gebruikt is progressive enhancement in deze leertaak. In de week van 
 
 Ik heb met behulp van @suustenvoorde de audio track verbinden met de juiste story en de audio laten tonen. Het is mij nog niet gelukt het transcript te tonen, maar het laat wel zien dat het verbonden is. Goed om hier verder op te gaan.
 
-playlists toevoegen en verwijderen
+Hier verbind ik de audio in de server.js:
+<code>const audioResponse = await fetch(`${api}${api_audio}/?filter={"id":"${request.params.id}"}`)
+  const audioResponseJSON = await audioResponse.json()</code> 
+
+Hier laat ik in de liquid file zien dat ik het verbind op de juiste wijze:
+<code>
+          <audio  controls src="https://fdnd-agency.directus.app/assets/{{ audio.audio_file }}">
+        <track
+        default
+        src="https://fdnd-agency.directus.app/assets/{{ story.transcript }}" />
+</code>
+
+playlists toevoegen en verwijderen doe je met een post systeem dat jouw data toevoegd en ook weer verwijderd. Met de code hieronder voeg je een playlist toe.
+    <code>app.post('/', async function (request, response) {
+    // console.log(request.body)
+    // eerst fetch ik naar de juiste informatie
+    const results = await fetch('https://fdnd-agency.directus.app/items/tm_playlist',{
+      method: 'POST',
+      body: JSON.stringify({
+        title: request.body.title
+      }),
+      headers: {
+        'Content-type':'application/json;charset=UTF-8'
+      }
+    });
+    console.log(results)
+    response.redirect(303, '/')
+  })
+  </code>
+  En hier verwijder je weer een playlist
+  <code>
+        app.post('/delete/:id', async function (request, response) {
+      // console.log(request.body)
+
+      const deleteplaylist = await fetch(`https://fdnd-agency.directus.app/items/tm_playlist/${request.params.id}`,{
+        method: 'DELETE',
+
+      });
+      // console.log(deleteplaylist)
+
+      response.redirect(303, '/')
+    })
+  </code>
 
 ## Installatie
 <!-- Bij Installatie staat hoe een andere developer aan jouw repo kan werken -->
