@@ -32,8 +32,10 @@ Wat ik heb gebruikt is progressive enhancement in deze leertaak. In de week van 
 Ik heb met behulp van @suustenvoorde de audio track verbinden met de juiste story en de audio laten tonen. Het is mij nog niet gelukt het transcript te tonen, maar het laat wel zien dat het verbonden is. Goed om hier verder op te gaan.
 
 Hier verbind ik de audio in de server.js:
-<code>const audioResponse = await fetch(`${api}${api_audio}/?filter={"id":"${request.params.id}"}`)
-  const audioResponseJSON = await audioResponse.json()</code> 
+<code>
+  const audioResponse = await fetch(`${api}${api_audio}/?filter={"id":"${request.params.id}"}`)
+  const audioResponseJSON = await audioResponse.json()
+</code> 
 
 Hier laat ik in de liquid file zien dat ik het verbind op de juiste wijze:
 <code>
@@ -44,7 +46,9 @@ Hier laat ik in de liquid file zien dat ik het verbind op de juiste wijze:
 </code>
 
 playlists toevoegen en verwijderen doe je met een post systeem dat jouw data toevoegd en ook weer verwijderd. Met de code hieronder voeg je een playlist toe.
-    <code>app.post('/', async function (request, response) {
+
+  <code>
+    app.post('/', async function (request, response) {
     // console.log(request.body)
     // eerst fetch ik naar de juiste informatie
     const results = await fetch('https://fdnd-agency.directus.app/items/tm_playlist',{
@@ -58,9 +62,11 @@ playlists toevoegen en verwijderen doe je met een post systeem dat jouw data toe
     });
     console.log(results)
     response.redirect(303, '/')
-  })
+   })
   </code>
+
   En hier verwijder je weer een playlist
+
   <code>
         app.post('/delete/:id', async function (request, response) {
       // console.log(request.body)
@@ -77,7 +83,15 @@ playlists toevoegen en verwijderen doe je met een post systeem dat jouw data toe
 
 ## Installatie
 <!-- Bij Installatie staat hoe een andere developer aan jouw repo kan werken -->
-Als je mijn 
+Als met mijn project wil werken moet je eerst node.JS installeren.
+
+Als je node.js hebt geïnstalleerd moet in NPM init op je terminal intypen.
+
+Om de nodige bestanden te installeren in het project ga je bij de terminal in de code bewerking programma dit intypen 'npm install.'
+
+Om nu de server te starten en je code te zien typ je 'npm start.'
+
+Als je de server wilt sluiten druk je 'ctrl' + 'C' om de server te laten stoppen. 
 
 
 ## Bronnen
