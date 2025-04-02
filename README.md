@@ -38,7 +38,7 @@ Hier verbind ik de audio in de server.js:
 </code> 
 
 Hier laat ik in de liquid file zien dat ik het verbind op de juiste wijze:
-        <audio  controls src="https://fdnd-agency.directus.app/assets/{{ audio.audio_file }}">
+        </audio  controls src="https://fdnd-agency.directus.app/assets/{{ audio.audio_file }}">
         <track
         default
         src="https://fdnd-agency.directus.app/assets/{{ story.transcript }}" />
