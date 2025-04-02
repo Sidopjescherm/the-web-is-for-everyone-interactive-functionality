@@ -49,8 +49,6 @@ playlists toevoegen en verwijderen doe je met een post systeem dat jouw data toe
 
   <code>
     app.post('/', async function (request, response) {
-    // console.log(request.body)
-    // eerst fetch ik naar de juiste informatie
     const results = await fetch('https://fdnd-agency.directus.app/items/tm_playlist',{
       method: 'POST',
       body: JSON.stringify({
@@ -60,7 +58,6 @@ playlists toevoegen en verwijderen doe je met een post systeem dat jouw data toe
         'Content-type':'application/json;charset=UTF-8'
       }
     });
-    console.log(results)
     response.redirect(303, '/')
    })
   </code>
@@ -69,13 +66,11 @@ playlists toevoegen en verwijderen doe je met een post systeem dat jouw data toe
 
   <code>
         app.post('/delete/:id', async function (request, response) {
-      // console.log(request.body)
 
       const deleteplaylist = await fetch(`https://fdnd-agency.directus.app/items/tm_playlist/${request.params.id}`,{
         method: 'DELETE',
 
       });
-      // console.log(deleteplaylist)
 
       response.redirect(303, '/')
     })
