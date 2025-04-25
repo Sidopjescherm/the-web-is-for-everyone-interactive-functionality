@@ -32,9 +32,13 @@
           // Let op: hiermee overschrijven we de default Loading state van de browser...
           event.preventDefault()
 
-          let toevoegen = document.querySelector('button:nth-of-type(1)')
+          form.classList.add("load-state")
 
-          toevoegen.classList.add("load-state")
+          let formData = new FormData(form)
+
+          if (event.submitter) {
+          formData.append(event.submitter.name, event.submitter.value)
+        }
       
           // Doe een fetch naar de server, net als hoe de browser dit normaal zou doen
           // Gebruik daarvoor het action en method attribuut van het originele formulier
@@ -52,15 +56,26 @@
           // Parse de nieuwe HTML en maak hiervan een nieuw Document Object Model in het geheugen
           const parser = new DOMParser()
           const responseDOM = parser.parseFromString(responseText, 'text/html')
-      
+          
+          // console.log(toevoegen.type)
           // Zoek in die nieuwe DOM onze nieuwe state op, die we via Liquid hebben klaargemaakt
           // We gebruiken hiervoor het data-enhanced attribuut, zodat we weten waar we naar moeten zoeken
           // (Hierdoor kunnen we ook meerdere formulieren op dezelfde pagina gebruiken)
           const newState = responseDOM.querySelector('[data-enhanced="' + form.getAttribute('data-enhanced') + '"]')
+          const newPlaylist = responseDOM.querySelector('#playlists li:last-of-type')
 
-          toevoegen.classList.remove("load-state")
+          form.classList.remove("load-state")
+
+
+          newState.classList.add('succes-state')
+      
+
+        console.log(newPlaylist)
+          
           // Overschrijf ons formulier met de nieuwe HTML
           // Hier wil je waarschijnlijk de Loading state vervangen door een Success state
+          let playlists = document.querySelector("#playlists")
+          playlists.insertAdjacentElement("beforeend", newPlaylist)
           form.outerHTML = newState.outerHTML
       
         })

@@ -77,7 +77,7 @@ app.get('/', async function (request, response) {
   const storyResponseJSON = await storyResponse.json()
   const playlistResponseJSON = await playlistResponse.json()
 
-  console.log(storyResponseJSON)
+  // console.log(storyResponseJSON)
 
   response.render('index.liquid', 
     {stories: storyResponseJSON.data,
@@ -98,7 +98,7 @@ app.post('/', async function (request, response) {
       'Content-type':'application/json;charset=UTF-8'
     }
   });
-  console.log(results)
+  // console.log(results)
   response.redirect(303, '/')
 })
 
@@ -129,7 +129,7 @@ app.get('/stories/:id', async function (request, response) {
   const animalReponse = await fetch(`${api}${api_animal}/?filter={"id":"${request.params.id}"}`)
   const animalReponseJSON = await animalReponse.json()
   // console.log(animalReponseJSON), 
-  console.log(audioResponseJSON)
+  // console.log(audioResponseJSON)
 
   // Hier render ik de verhalen en de buddies
   response.render('story.liquid', {story: storyResponseJSON.data[0], buddy: animalReponseJSON.data[0], audio: audioResponseJSON.data[0]})

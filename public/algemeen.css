@@ -18,6 +18,10 @@
     .load-state{
         background-color: blue;
     }
+
+    .succes-state{
+        background-color: green;
+    }
     @supports (display: inline-flex){
         #stories label {
             display:inline-flex;
@@ -79,4 +83,13 @@
     ul{
         display:grid;
 	    gap:1em;
+    }
+
+    li{
+        list-style: none;
+
+    }
+
+    #playlists li{
+        background-color: white;
     }
